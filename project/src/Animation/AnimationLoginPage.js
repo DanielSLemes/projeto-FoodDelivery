@@ -15,8 +15,8 @@ export  function AnimationLoginPage  (props)  {
         }
     };
     const animation = <Lottie options={defaultOptions}
-        height={90}
-        width={150}
+        height={120}
+        width={200}
         name= {"FoodCorps"}
         direction={animationState.direction}
         isStopped={animationState.isStopped}

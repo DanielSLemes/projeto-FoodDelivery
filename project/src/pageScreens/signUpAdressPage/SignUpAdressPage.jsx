@@ -57,7 +57,8 @@ const SignUpAdressPage = () => {
             })
             .then((response) => { 
                 window.localStorage.setItem("token", response.data.token);
-                console.log(response.data)
+                console.log( response.data)
+                console.log( "oi")
                 history.push("/restaurantes/:id");
                
 
@@ -166,6 +167,7 @@ const SignUpAdressPage = () => {
                         <Button onClick={handleAdress}>Salvar</Button>
                     </ButtonSignUp>
                 </Form >
+                <Button onClick={handleAdress}>Salvar</Button>
             </ThemeProvider>
         </Container>
     )
