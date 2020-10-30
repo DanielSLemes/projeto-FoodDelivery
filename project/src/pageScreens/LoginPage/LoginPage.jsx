@@ -89,11 +89,12 @@ const LoginPage = () => {
             </Input>
 
           </InputConfig>
-          <ButtonConfig>
-            <Button onClick={handleLoginPage}>Entrar</Button>
+        </Form>
+        <ButtonConfig>
+        <Button onClick={handleLoginPage}>Entrar</Button>
           </ButtonConfig>
           <SignUp onClick={() => goToSignUpPage(history)}>Não possui cadastro? Click aqui</SignUp>
-        </Form>
+       
       </ThemeProvider>
       <DivAnimation>
         <AnimationLoginPage />
