@@ -22,11 +22,12 @@ justify-content:center;
 width:90%;
 font-size:30px;
 margin:2vh 0 0 0;
-color: green;
+background-color:#ffff;
+border-radius: 4px 4px 0 0;
 `
 export const Button = styled.button`
 width:100%;
-height:8vh;
+height:7vh;
 border:none;
 font-size:4.5vw;
 background-color:#006400;
@@ -35,11 +36,18 @@ cursor:pointer;
 margin:2vh 0 5vh 0;
 border-radius: 4px 4px 0 0;
 `
+export const InputCep = styled.input` 
+width:100%;
+height:7vh;
+background-color:#ffff;
+
+`
 export const ContainerButton = styled.div`
 margin-top:2vh;
 `
 export const ButtonSignUp = styled.div`
 width:90vw;
+margin:0 auto;
 
 `
 export const Input = styled(TextField)`
@@ -60,7 +68,7 @@ justify-content:flex-start;
 align-items:center;
 padding-left:5vw;
 height: 64px;
-border-bottom:1px solid black; 
+border-bottom:1px solid #ffff; 
 width: 100vw;
 `
 export const ImageConfig = styled.img`
@@ -79,4 +87,15 @@ export const Title = styled.h3`
   line-height: normal;
   letter-spacing: -0.39px;
   text-align: center;
+`
+
+export const ButtonCep = styled.span`
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:3.7vw;
+width:25vw;
+color:#ffff;
+background-color:#006400;
+
 `

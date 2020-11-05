@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Lottie from 'react-lottie';
-import animationData from "../animationLoginPage.json";
+import animationData from "../animationCep.json";
 
 
-export  function AnimationLoginPage  (props)  {
+export function AnimationCep (props)  {
     const [animationState] = useState({ isStopped: false, isPaused: false, direction:1, name:true})
 
     const defaultOptions = {
@@ -15,13 +15,8 @@ export  function AnimationLoginPage  (props)  {
         }
     };
     const animation = <Lottie options={defaultOptions}
- config2
-        height={100}
-        width={120}
-
-        height={110}
-        width={1900}
- main
+        height={90}
+        width={130}
         name= {"FoodCorps"}
         direction={animationState.direction}
         isStopped={animationState.isStopped}
@@ -34,7 +29,6 @@ export  function AnimationLoginPage  (props)  {
         )
    
 }
-
 
 
 

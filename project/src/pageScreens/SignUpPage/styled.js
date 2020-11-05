@@ -20,8 +20,11 @@ justify-content:center;
 width:90%;
 font-size:30px;
 margin-bottom:3vh;
-color: green;
+border-radius: 4px 4px 0 0;
+background-color:#ffff;
 `
+
+
 
 export const Button = styled.button`
 width:100%;
@@ -39,7 +42,7 @@ export const ContainerButton = styled.div`
 `
 export const ButtonSignUp = styled.div`
 width:90vw;
-
+margin:0 auto;
 `
 export const Input = styled(TextField)`
 input:-webkit-autofill,
@@ -64,7 +67,7 @@ justify-content:flex-start;
 align-items:center;
 padding-left:5vw;
 height: 64px;
-border-bottom:1px solid black; 
+border-bottom:1px solid #FFFF; 
 width: 100vw;
 `
 export const ImageConfig = styled.img`

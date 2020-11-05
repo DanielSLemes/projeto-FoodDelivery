@@ -1,62 +1,55 @@
-import { useHistory } from "react-router-dom";
-import axios from 'axios'
 import React, { useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { goToSignUpPage } from "../../routes/Cordinator";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { Container, InputConfig, Form, SignUp, Input, ButtonConfig,ImageDiv, Image, Button, DivAnimation} from "./styled"
+import axios from 'axios'
 import LOGO from "../../assets/Img/logo.png"
+import { goToSignUpPage } from "../../routes/Cordinator";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { Container, InputConfig, Form, SignUp, Input, ButtonConfig, ImageDiv, Image, Button, DivAnimation } from "./styled"
 import { BASE_URL } from "../../const/BaseUrl/BASE_URL";
 import { AnimationLoginPage } from "../../Animation/AnimationLoginPage";
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: "#006400",
-    },
-    secondary: {
-      main: "#2E8B57",
-    },
-  },
-});
+import { theme } from "../../components/Theme/Theme"
 
 const LoginPage = () => {
-  const { form, onChange } = useForm({ senha: "", email: "" });
+  const { form, onChange } = useForm({ senha: "", email: "" })
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     onChange(name, value);
-  };
+  }
 
-  const history = useHistory();
+  const history = useHistory()
+
   useEffect(() => {
-    const token = window.localStorage.getItem("token");
+    const token = window.localStorage.getItem("token")
     if (token) {
-      history.push("/restaurantes");
+      history.push("/restaurantes")
     }
-  }, [history]);
+  }, [history])
 
   const handleLoginPage = () => {
+
     const body = {
       email: form.email,
       password: form.senha,
-    };
+    }
+
     axios
       .post(`${BASE_URL}/login`, body)
       .then((response) => {
         window.localStorage.setItem("token", response.data.token);
-        console.log(response.data)
         history.push("/restaurantes");
       })
       .catch((err) => {
-        alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
-      });
-  };
+        alert("Não foi possivel completar a sua solicitação, se cadastre para entrar no aplicativo.")
+        history.push("/cadastro");
+      })
+  }
   return (
     <Container>
       <ImageDiv>
         <Image src={LOGO} />
       </ImageDiv>
-   
       <ThemeProvider theme={theme}>
         <Form onSubmit={handleLoginPage}>
           <InputConfig>
@@ -85,22 +78,27 @@ const LoginPage = () => {
               name="senha"
               placeholder="senha"
               required
-              onChange={handleInputChange}>   
+              onChange={handleInputChange}>
             </Input>
-
           </InputConfig>
         </Form>
+ config2
+
         <ButtonConfig>
         <Button onClick={handleLoginPage}>Entrar</Button>
           </ButtonConfig>
           <SignUp onClick={() => goToSignUpPage(history)}>Não possui cadastro? Click aqui</SignUp>
        
+main
       </ThemeProvider>
+      <ButtonConfig>
+        <Button onClick={handleLoginPage}>Entrar</Button>
+      </ButtonConfig>
+      <SignUp onClick={() => goToSignUpPage(history)}>Não possui cadastro? Click aqui</SignUp>
       <DivAnimation>
         <AnimationLoginPage />
       </DivAnimation>
-      
     </Container>
-  );
+  )
 }
 export default LoginPage;
