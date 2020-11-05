@@ -1,52 +1,69 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { BASE_URL } from "../../const/BaseUrl/BASE_URL";
-import Back from "../../assets/Img/back.png"
+
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import { BackConfig, Form, Title, Container, Input, ButtonSignUp, InputConfig, ImageConfig, Image, Button } from "./styled";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { BackConfig, Form, Title, Container, Input, ButtonSignUp, InputConfig, ImageConfig, Image, Button, ButtonCep } from "./styled";
 import { goBack } from "../../routes/Cordinator"
-
-
-
-const theme = createMuiTheme({
-    palette: {
-        primary: {
-            main: "#006400",
-        },
-        secondary: {
-            main: "#2E8B57",
-        },
-    },
-});
-
+import { AnimationBack } from "../../Animation/AnimationBack";
+import { theme } from "../../components/Theme/Theme";
 
 const SignUpAdressPage = () => {
+    const [cep, setCep] = useState([])
 
     const { form, onChange } = useForm({
-        street: "",
+        street: cep,
         number: "",
-        neighbourhood: "",
-        city: "",
-        state: "",
+        neighbourhood: cep,
+        city: cep,
+        state: cep,
         complement: ""
     });
 
+    const history = useHistory();
+
+    useEffect(() => {
+
+        const token = window.localStorage.getItem("token")
+        if (!token) {
+            history.push("/cadastro");
+        }
+    }, [history]);
+
+    const backRemoveToken = () => {
+        if (window.confirm("Se você voltar, não poderá usar os dados de CPF e E-mail cadastrados na primeira tentativa. Deseja realmente voltar?")) {
+            localStorage.removeItem('token')
+            goBack(history)
+        }
+    }
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         onChange(name, value);
     };
+    const onChangeCep = (event) => {
+        setCep(event.target.value);
+    }
 
-     const history = useHistory();
+    const pegarCep = () => {
+        axios
+            .get(`https://viacep.com.br/ws/${cep}/json/unicode/`)
+            .then((resposta) => {
+                setCep(resposta.data)
+            })
+            .catch((erro) => {
+                alert("CEP não encontrado")
+            });
+    };
 
     const handleAdress = () => {
         const body = {
-            street: form.street,
+            street: cep.logradouro,
             number: form.number,
-            neighbourhood: form.neighbourhood,
-            city: form.city,
-            state: form.state,
+            neighbourhood: cep.bairro,
+            city: cep.localidade,
+            state: cep.uf,
             complement: form.complement
         }
         axios
@@ -55,26 +72,18 @@ const SignUpAdressPage = () => {
                     auth: window.localStorage.getItem("token")
                 }
             })
-            .then((response) => { 
+            .then((response) => {
                 window.localStorage.setItem("token", response.data.token);
-                console.log(response.data)
-                history.push("/restaurantes/:id");
-               
-
+                history.push("/restaurantes");
             })
             .catch((err) => {
                 alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
             });
     }
-    const backRemoveToken = () => {
-        if (window.confirm("Se você voltar, não poderá usar os dados de CPF e E-mail cadastrados na primeira tentativa. Deseja realmente voltar?")) {
-            localStorage.removeItem('token')
-            goBack(history)
-        }
-    }
+
     return (
         <Container>
-            <BackConfig onClick={backRemoveToken}> <ImageConfig src={Back} width="13vw" /> </BackConfig>
+            <BackConfig onClick={backRemoveToken}> <AnimationBack /> </BackConfig>
             <Title>Meu endereço</Title>
             <ThemeProvider theme={theme}>
                 <Form >
@@ -82,9 +91,25 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
+                            label="Cep"
+                            value={cep.cep}
+                            type="text"
+                            name="cep"
+                            placeholder="CEP"
+                            required
+                            onChange={onChangeCep}
+                            onBlur={pegarCep}
+                        >
+                        </Input>
+                    </InputConfig>
+                    <InputConfig>
+                        <Input
+                            fullWidth="bool"
+                            color="secondary"
+                            variant={"filled"}
                             label="Logradouro"
-                            value={form.street}
+                            value={cep.logradouro}
                             type="text"
                             name="street"
                             placeholder="Rua / Av."
@@ -96,7 +121,7 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
                             label="Número"
                             value={form.number}
                             type="text"
@@ -110,7 +135,7 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
                             label="Complemento"
                             value={form.complement}
                             type="text"
@@ -124,9 +149,9 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
                             label="Bairro"
-                            value={form.neighbourhood}
+                            value={cep.bairro}
                             type="text"
                             name="neighbourhood"
                             placeholder="Bairro"
@@ -138,9 +163,9 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
                             label="Cidade"
-                            value={form.city}
+                            value={cep.localidade}
                             type="text"
                             name="city"
                             placeholder="Cidade"
@@ -152,9 +177,9 @@ const SignUpAdressPage = () => {
                         <Input
                             fullWidth="bool"
                             color="secondary"
-                            variant={"outlined"}
+                            variant={"filled"}
                             label="Estado"
-                            value={form.state}
+                            value={cep.uf}
                             type="text"
                             name="state"
                             placeholder="Estado"
@@ -162,11 +187,11 @@ const SignUpAdressPage = () => {
                             onChange={handleInputChange}>
                         </Input>
                     </InputConfig>
-                    <ButtonSignUp>
-                        <Button onClick={handleAdress}>Salvar</Button>
-                    </ButtonSignUp>
                 </Form >
             </ThemeProvider>
+            <ButtonSignUp>
+                <Button onClick={handleAdress}>Salvar</Button>
+            </ButtonSignUp>
         </Container>
     )
 }

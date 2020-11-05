@@ -2,7 +2,7 @@ import styled from "styled-components"
 import {  TextField } from "@material-ui/core";
 
 
-export const Container = styled.div`
+export const Container = styled.body`
 background-color:#2E8B57;
 width:100vw;
 min-height:100vh;
@@ -11,7 +11,7 @@ min-height:100vh;
 export const Form= styled.form`
 display:flex;
 flex-direction:column;
-width:100vw;
+
 align-items:center;
 background-color:#2E8B57;
 
@@ -32,6 +32,7 @@ border:none;
 font-size:4.5vw;
 background-color:#006400;
 color:#ffff;
+border-radius:5px 5px 0 0;
 `
 export const ContainerButton = styled.div`
 margin-top:2vh;
@@ -52,7 +53,7 @@ line-height: normal;
 letter-spacing: -0.39px;
 text-align: center;
 color: #ffff;
-margin-top:3vh;
+margin:3vh 0 10vh 0;
 `
 
 export const Input = styled(TextField)`
@@ -65,17 +66,19 @@ input:-webkit-autofill:active  {
 `
 export const ButtonConfig = styled.div`
 width:90%;
-margin-top:2vh;
+margin:2vh auto;
 `
 export const ImageDiv = styled.div`
 text-align:center;
+width:100vw;
 `
 export const Image = styled.img`
 width:60%;
-height:60%
+height:60%;
 `
 export const DivAnimation = styled.div`
-margin:5vh 0 0 0;
+margin:0 auto;
+width:80vw;
 `
 
 
