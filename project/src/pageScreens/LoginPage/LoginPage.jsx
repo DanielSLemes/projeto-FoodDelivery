@@ -82,14 +82,6 @@ const LoginPage = () => {
             </Input>
           </InputConfig>
         </Form>
- config2
-
-        <ButtonConfig>
-        <Button onClick={handleLoginPage}>Entrar</Button>
-          </ButtonConfig>
-          <SignUp onClick={() => goToSignUpPage(history)}>Não possui cadastro? Click aqui</SignUp>
-       
-main
       </ThemeProvider>
       <ButtonConfig>
         <Button onClick={handleLoginPage}>Entrar</Button>

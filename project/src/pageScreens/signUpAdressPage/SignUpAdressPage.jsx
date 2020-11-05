@@ -188,7 +188,6 @@ const SignUpAdressPage = () => {
                         </Input>
                     </InputConfig>
                 </Form >
-                <Button onClick={handleAdress}>Salvar</Button>
             </ThemeProvider>
             <ButtonSignUp>
                 <Button onClick={handleAdress}>Salvar</Button>

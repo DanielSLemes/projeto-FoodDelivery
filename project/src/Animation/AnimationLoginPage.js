@@ -15,14 +15,12 @@ export  function AnimationLoginPage  (props)  {
         }
     };
     const animation = <Lottie options={defaultOptions}
- config2
-        height={100}
-        width={120}
+ 
 
         height={110}
-        width={1900}
+        width={190}
  main
-        name= {"FoodCorps"}
+        name= {"FoodDelivery"}
         direction={animationState.direction}
         isStopped={animationState.isStopped}
         isPaused={animationState.isPaused} />
