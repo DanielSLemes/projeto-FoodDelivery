@@ -55,6 +55,7 @@ input:-webkit-autofill:active  {
 `
 export const ImageDiv = styled.div`
 text-align:center;
+margin-bottom:2vh;
 
 `
 export const Image = styled.img`
@@ -69,6 +70,7 @@ padding-left:5vw;
 height: 64px;
 border-bottom:1px solid #FFFF; 
 width: 100vw;
+margin-bottom:2vh;
 `
 export const ImageConfig = styled.img`
 width:7vw;
