@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { TextField } from "@material-ui/core";
 
 export const FeedPageContainer = styled.div`
   width: 100vw;
@@ -119,4 +120,12 @@ export const SectionButton = styled.div`
   svg {
     cursor: pointer;
   }
+`
+export const Input = styled(TextField)`
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    /* -webkit-box-shadow: 0 0 0 30px white inset !important; */
+}
 `

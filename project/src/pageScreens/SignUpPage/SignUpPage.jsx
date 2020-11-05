@@ -1,36 +1,28 @@
 import { useHistory } from "react-router-dom";
-import { Container, InputConfig, Form, ButtonSignUp, Input, ImageDiv, Image, BackConfig, ImageConfig,Button} from './styled'
-import { goBack } from "../../routes/Cordinator"
-import axios from 'axios'
-import React, { useEffect } from 'react'
+import { Container, InputConfig, Form, ButtonSignUp, ImageDiv, Image, BackConfig, ImageConfig, Button, Input } from './styled';
+import { goBack } from "../../routes/Cordinator";
+import axios from 'axios';
+import React, { useEffect } from 'react';
 import { useForm } from "../../hooks/useForm";
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
-import LOGO from "../../assets/Img/logo.png"
-import Back from "../../assets/Img/back.png"
+import { ThemeProvider } from "@material-ui/core/styles";
+import LOGO from "../../assets/Img/logo.png";
 import { BASE_URL } from "../../const/BaseUrl/BASE_URL";
-const theme = createMuiTheme({
-    palette: {
-      primary: {
-        main: "#006400",
-      },
-      secondary: {
-        main: "#2E8B57",
-      },
-    },
-  });
+import { AnimationBack } from "../../Animation/AnimationBack";
+import { theme } from "../../components/Theme/Theme";
 
-  const SignUpPage = () => {
+const SignUpPage = () => {
     const { form, onChange, resetState } = useForm({ name: "", email: "", cpf: "", password: "" });
     const handleInputChange = (event) => {
         const { name, value } = event.target;
-        onChange(name, value);
-    };
-    const history = useHistory();
+        onChange(name, value)
+    }
+
+    const history = useHistory()
+
     useEffect(() => {
-        
-        const token = window.localStorage.getItem("token");
+        const token = window.localStorage.getItem("token")
         if (token) {
-             history.push("/endereco");
+            history.push("/endereco");
         }
     }, [history]);
 
@@ -42,20 +34,20 @@ const theme = createMuiTheme({
             email: form.email,
             cpf: form.cpf,
             password: form.password,
-        };
+        }
         axios
             .post(`${BASE_URL}/signup`, body)
             .then((response) => {
                 window.localStorage.setItem("token", response.data.token);
-                 history.push("/endereco");
+                history.push("/endereco");
             })
             .catch((err) => {
                 alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
             });
-    };
+    }
     return (
         <Container>
-            <BackConfig onClick={() => goBack(history)}> <ImageConfig src={Back} /> </BackConfig>
+            <BackConfig onClick={() => history.push("/login")}> <AnimationBack /></BackConfig>
             <ImageDiv>
                 <Image src={LOGO} />
             </ImageDiv>
@@ -118,10 +110,10 @@ const theme = createMuiTheme({
                             onChange={handleInputChange}>
                         </Input>
                     </InputConfig>
-                    <ButtonSignUp>
-                        <Button onClick={handleSignUp}>Criar</Button>
-                    </ButtonSignUp>
                 </Form>
+                <ButtonSignUp>
+                    <Button onClick={handleSignUp}>Criar</Button>
+                </ButtonSignUp>
             </ThemeProvider>
         </Container>
     );

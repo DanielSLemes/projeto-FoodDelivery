@@ -16,9 +16,9 @@ const FeedPage = () => {
 	const [filter, setFilter] = useState("")
 
 	const restaurants = restaurantsList.restaurants
-	console.log(restaurants)
+	console.log("o que tem aki?",restaurants)
 	const categories = restaurants && Array.from(new Set(restaurants.map(item => item.category)))
-
+	console.log("o que tem nesse?",categories)
 	const renderFilter = () => (
 		categories.map(item => {
 			return (
@@ -34,7 +34,7 @@ const FeedPage = () => {
 			)
 		})
 	)
-
+	console.log("o que tem nesse outro?",FilterItem)
 	const renderRestaurants = () => (
 		restaurants.filter(item => filter === "" ? 1 : item.category === filter)
 		.map(item => {
@@ -79,3 +79,76 @@ const FeedPage = () => {
 }
 
 export default FeedPage
+
+
+// import { useHistory } from "react-router-dom";
+// import axios from 'axios'
+// import React, { useEffect, useState } from 'react';
+// import { useForm } from "../../hooks/useForm";
+// import { BASE_URL } from "../../const/BaseUrl/BASE_URL";
+// // import { Input } from "@material-ui/core";
+// import { Input } from "./styled"
+
+// const Teste = () => {
+//   const [search, setSearch] = useState([]);
+
+//   const onChangeInput = (event) => {
+//     setSearch(event.target.value)
+//   }
+
+
+//   const TestFilter = () => {
+
+//     axios
+//       .get(`${BASE_URL}/restaurants`, {
+//         headers: {
+//           auth: window.localStorage.getItem("token")
+//         }
+//       })
+//       .then((response) => {
+//         console.log(response.data)
+//         setSearch(response.data.restaurants)
+
+
+//       })
+//       .catch((err) => {
+//         alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
+//       });
+//   }
+
+ 
+ 
+
+// return (
+//   <div>
+
+//     <Input
+//       fullWidth="bool"
+//       variant={"filled"}
+//       type="name"
+//       label="faça sua pesquisa"
+//       onChange={onChangeInput}
+//       value={search}
+//       name="name"
+//       placeholder={"faça sua pesquisa"} />
+//     <button onClick={TestFilter}>aperte</button>
+
+ 
+//     {/* {search.map((item) => {
+//       return (<div>
+
+//            <p key={item.id}>{item.name}</p>
+//         <img src={item.logoUrl}></img>
+//         <p key={item.id}>{item.deliveryTime}</p>
+//         <p key={item.id}>{item.shipping}</p>
+        		
+//       </div>
+     
+//         )
+//     })} */}
+
+//   </div>
+// )
+// }
+
+// export default Teste;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Lottie from 'react-lottie';
-import animationData from "../animationLoginPage.json";
+import animationData from "../animationBack.json";
 
 
-export  function AnimationLoginPage  (props)  {
-    const [animationState] = useState({ isStopped: false, isPaused: false, direction:1, name:true})
+export  function AnimationBack  (props)  {
+    const [animationState] = useState({ isStopped: false, isPaused: false, direction:1 })
 
     const defaultOptions = {
         loop: true,
@@ -15,9 +15,9 @@ export  function AnimationLoginPage  (props)  {
         }
     };
     const animation = <Lottie options={defaultOptions}
-        height={90}
-        width={130}
-        name= {"FoodCorps"}
+        height={40}
+        width={60}
+        color= {"red"}
         direction={animationState.direction}
         isStopped={animationState.isStopped}
         isPaused={animationState.isPaused} />
@@ -27,10 +27,7 @@ export  function AnimationLoginPage  (props)  {
                 {animation}
             </div>
         )
-   
 }
 
 
-
-
-
+  
