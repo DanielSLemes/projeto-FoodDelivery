@@ -13,7 +13,6 @@ display:flex;
 flex-direction:column;
 
 align-items:center;
-background-color:#2E8B57;
 
 `
 export const InputConfig = styled.div`
@@ -22,11 +21,11 @@ justify-content:center;
 width:90%;
 font-size:30px;
 margin:2vh 0 0 0;
-color: green;
+background-color: white;
 `
 
 export const Button= styled.button`
-width:100%;
+width:90%;
 height:8vh;
 border:none;
 font-size:4.5vw;
@@ -65,14 +64,18 @@ input:-webkit-autofill:active  {
 }
 `
 export const ButtonConfig = styled.div`
-width:90%;
-margin:2vh auto;
+
+width:100%;
+margin-top:2vh;
+display: flex;
+justify-content: center;
 `
 export const ImageDiv = styled.div`
 text-align:center;
 width:100vw;
 `
 export const Image = styled.img`
+
 width:60%;
 height:60%;
 `

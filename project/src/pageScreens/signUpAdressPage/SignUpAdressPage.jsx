@@ -74,7 +74,7 @@ const SignUpAdressPage = () => {
             })
             .then((response) => {
                 window.localStorage.setItem("token", response.data.token);
-                history.push("/restaurantes");
+
             })
             .catch((err) => {
                 alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
@@ -188,6 +188,7 @@ const SignUpAdressPage = () => {
                         </Input>
                     </InputConfig>
                 </Form >
+                <Button onClick={handleAdress}>Salvar</Button>
             </ThemeProvider>
             <ButtonSignUp>
                 <Button onClick={handleAdress}>Salvar</Button>
