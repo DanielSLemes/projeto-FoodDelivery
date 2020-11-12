@@ -15,6 +15,8 @@ height: 120px;
 
 export const RestaurantInfo = styled(CardContent)`
 padding: 12px 16px 0 !important;
+
+
 `
 
 export const RestaurantTitle = styled.h2`

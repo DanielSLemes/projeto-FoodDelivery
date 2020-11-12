@@ -10,6 +10,7 @@ export const FeedPageContainer = styled.div`
   grid-template-rows: repeat(3, auto) 1fr auto;
   justify-content: center;
   align-content: start;
+  background-color:#2E8B57;
 `
 
 export const Header = styled.div`
@@ -43,7 +44,8 @@ export const SearchBox = styled.div`
   padding-left: 17px;
   padding-right: 8px;
   border-radius: 2px;
-  border: solid 1px #b8b8b8;
+  border: solid 1px #000000;
+  background-color:#ffffff;
   display: flex;
   align-items: center;
   gap: 15.3px;
@@ -64,6 +66,7 @@ export const SearchPlaceholder = styled.p`
 
 export const FilterBox = styled.div`
   box-sizing: border-box;
+  color:#ffff;
   height: 42px;
   padding: 0 16px;
   display: flex;
