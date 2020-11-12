@@ -15,8 +15,8 @@ export  function AnimationSearch  (props)  {
         }
     };
     const animation = <Lottie options={defaultOptions}
-        height={170}
-        width={230}
+        height={230}
+        width={300}
         color= {"red"}
         direction={animationState.direction}
         isStopped={animationState.isStopped}
