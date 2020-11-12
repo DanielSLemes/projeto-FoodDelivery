@@ -25,7 +25,7 @@ const FeedPage = () => {
 				<FilterItem
 					key={item}
 					onClick={()=>setFilter(item === filter ? "" : item )}
-					style={{color: item === filter && "#E86E5A"}}
+					style={{color: item === filter && "#000000"}}
 				>
 					<FilterText>
 						{item}
@@ -54,12 +54,7 @@ const FeedPage = () => {
 
 	return (
 		<FeedPageContainer>
-			<Header>
-				<HeaderTitleBox>
-					<HeaderTitle>Rappi4</HeaderTitle>
-				</HeaderTitleBox>
-			</Header>
-			<SearchBox onClick={()=>goToRestaurantSearchPage(history)}>
+					<SearchBox onClick={()=>goToRestaurantSearchPage(history)}>
 				<SearchIcon />
 				<SearchPlaceholder>Restaurante</SearchPlaceholder>
 			</SearchBox>
@@ -88,67 +83,89 @@ export default FeedPage
 // import { BASE_URL } from "../../const/BaseUrl/BASE_URL";
 // // import { Input } from "@material-ui/core";
 // import { Input } from "./styled"
+// import _ from "lodash"
+
+// // const _ = require("lodash");
+
+
 
 // const Teste = () => {
-//   const [search, setSearch] = useState([]);
+// 	const [restaurantList, setRestaurantList] = useState([]);
+// 	const [search, setSearch] = useState();
 
-//   const onChangeInput = (event) => {
-//     setSearch(event.target.value)
-//   }
+// 	const onChangeInput = (event) => {
+// 		setSearch(event.target.value)
+// 	}
 
-
-//   const TestFilter = () => {
-
-//     axios
-//       .get(`${BASE_URL}/restaurants`, {
-//         headers: {
-//           auth: window.localStorage.getItem("token")
-//         }
-//       })
-//       .then((response) => {
-//         console.log(response.data)
-//         setSearch(response.data.restaurants)
+// 	const TestFilter = () => {
 
 
-//       })
-//       .catch((err) => {
-//         alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
-//       });
-//   }
+// 		axios
+// 			.get(`${BASE_URL}/restaurants`, {
+// 				headers: {
+// 					auth: window.localStorage.getItem("token")
+// 				}
+// 			})
+// 			.then((response) => {
+// 				console.log(response.data.restaurants)
+// 				setRestaurantList(response.data.restaurants)
 
- 
- 
 
-// return (
-//   <div>
+// 			})
+// 			.catch((err) => {
+// 				alert("Não foi possivel completar a sua solicitação, tente novamente mais tarde.")
+// 			});
+// 	}
 
-//     <Input
-//       fullWidth="bool"
-//       variant={"filled"}
-//       type="name"
-//       label="faça sua pesquisa"
-//       onChange={onChangeInput}
-//       value={search}
-//       name="name"
-//       placeholder={"faça sua pesquisa"} />
-//     <button onClick={TestFilter}>aperte</button>
 
- 
-//     {/* {search.map((item) => {
-//       return (<div>
+
+
+// 	const renderRestaurantSearch = () => {
+// 		if (search === "") {
+// 			return (
+// 				<p>Busque por nome de restaurante</p>
+// 			)
+// 		} else {
+// 			const filteredRestaurants = restaurants.filter(item => {
+// 				return item.name.toLowerCase().includes(search.toLowerCase())
+// 			})
+// 	return (
+// 		<div>
+
+// 			<Input
+// 				fullWidth="bool"
+// 				variant={"filled"}
+// 				type="name"
+// 				label="faça sua pesquisa"
+// 				onChange={onChangeInput}
+// 				value={search.name}
+// 				name="name"
+// 				placeholder={"faça sua pesquisa"} />
+// 			<button onClick={TestFilter}>aperte</button>
+
+
+
+// 			{restaurantList.map((item) => {
+//           return (
+// 		  <div>
 
 //            <p key={item.id}>{item.name}</p>
-//         <img src={item.logoUrl}></img>
+//         <img src={item.logoUrl} width={"200px"}/>
 //         <p key={item.id}>{item.deliveryTime}</p>
 //         <p key={item.id}>{item.shipping}</p>
         		
 //       </div>
      
 //         )
-//     })} */}
+//     })} 
+// 	{/* {search.filter((ite)=> ite.name)} */}
 
-//   </div>
-// )
+
+
+
+
+// 		</div>
+// 	)
 // }
 
 // export default Teste;
