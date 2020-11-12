@@ -21,7 +21,7 @@ const RestaurantSearchPage = () => {
 		if (search === "") {
 			return (
 
-				<SearchPlaceholder>Busque por nome de restaurante <ASearch><AnimationSearch /></ASearch> </SearchPlaceholder>
+				<SearchPlaceholder>Busque por nome de restaurante<ASearch><AnimationSearch /></ASearch> </SearchPlaceholder>
 
 
 			)
